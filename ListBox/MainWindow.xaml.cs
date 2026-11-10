@@ -13,8 +13,9 @@ namespace ListBox
 {
     public partial class MainWindow : Window
     {
-
         List<string> termekek = new List<string>();
+        public int counter { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +48,7 @@ namespace ListBox
             if (!string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
             {
                 AddToListHelper();
+                CounterPlus();
             }
             else if (string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
             {
@@ -60,6 +62,7 @@ namespace ListBox
             {
                 termekek.Remove(lbNevek.SelectedItem.ToString());
                 ReloadListBox();
+                CounterMinus();
             }
             else if (lbNevek.SelectedItem == null)
             {
@@ -70,6 +73,7 @@ namespace ListBox
         {
             termekek.Clear();
             ReloadListBox();
+            CounterDef();
         }
 
         private void txtBoxKeyDown(object sender, KeyEventArgs e)
@@ -77,6 +81,7 @@ namespace ListBox
             if (e.Key == Key.Enter && !string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
             {
                 AddToListHelper();
+                CounterPlus();
             }
             else if (e.Key == Key.Enter && string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
             {
@@ -94,6 +99,22 @@ namespace ListBox
             termekek.Add(txtBox.Text.ToString());
             ReloadListBox();
             txtBox.Text = "";
+        }
+
+        private void CounterPlus()
+        {
+            counter++;
+            lblInfo.Content = $"Termek Counter: {counter}";
+        }
+        private void CounterMinus()
+        {
+            counter--;
+            lblInfo.Content = $"Termek Counter: {counter}";
+        }
+        private void CounterDef()
+        {
+            counter = 0;
+            lblInfo.Content = $"Termek Counter: {counter}";
         }
     }
 }

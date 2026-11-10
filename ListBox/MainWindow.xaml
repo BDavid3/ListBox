@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="ListBox" Height="450" Width="800">
     <Grid>
-
+        <ListBox x:Name="lbNevek" Width="200" Height="250" HorizontalAlignment="Left" Margin="20"></ListBox>
     </Grid>
 </Window>

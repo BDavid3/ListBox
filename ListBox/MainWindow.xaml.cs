@@ -66,6 +66,12 @@ namespace ListBox
                 MessageBox.Show("No item selected");
             }
         }
+        private void btnDeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            termekek.Clear();
+            ReloadListBox();
+        }
+
         private void txtBoxKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && !string.IsNullOrWhiteSpace(txtBox.Text.ToString()))

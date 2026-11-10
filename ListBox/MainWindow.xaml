@@ -11,5 +11,6 @@
         <ListBox x:Name="lbNevek" Width="200" Height="250" HorizontalAlignment="Left" Margin="20" SelectionMode="Extended" Background="AntiqueWhite"/>
         <Button x:Name="btnAdd" Content="Add" Width="80" Height="25" HorizontalAlignment="Left" Margin="20,300,0,0" Background="LightGreen" Click="btnAdd_Click"/>
         <Button x:Name="btnDelete" Content="Delete" Width="80" Height="25" HorizontalAlignment="Left" Margin="140,300,0,0" Background="LightCoral" Click="btnDelete_Click"/>
+        <Button x:Name="btnDeleteAll" Content="Delete All" Width="80" Height="25" HorizontalAlignment="Left" Margin="80,380,0,0" Background="LightSalmon" Click="btnDeleteAll_Click" />
     </Grid>
 </Window>

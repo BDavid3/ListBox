@@ -11,14 +11,37 @@ using System.Windows.Shapes;
 
 namespace ListBox
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+
+        List<string> nevekLista = new List<string>() { "Kovács Anna", "Nagy Béla", "Szabó Kata" };
         public MainWindow()
         {
             InitializeComponent();
+            lbNevek.ItemsSource = null;
+            lbNevek.ItemsSource = nevekLista;
+        }
+
+
+        public void SelectItem()
+        {
+            if (lbNevek.SelectedItem != null)
+            {
+                string kivalasztottNev = lbNevek.SelectedItem.ToString();
+                int index = lbNevek.SelectedIndex;
+            }
+        }
+
+        public void DeleteItem()
+        {
+           if (lbNevek.SelectedItem != null)
+           {
+                string torlendo = lbNevek.SelectedItem.ToString();
+                nevekLista.Remove(torlendo);
+
+                lbNevek.ItemsSource = null;
+                lbNevek.ItemsSource = nevekLista;
+            }
         }
     }
 }

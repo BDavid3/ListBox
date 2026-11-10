@@ -61,6 +61,10 @@ namespace ListBox
                 termekek.Remove(lbNevek.SelectedItem.ToString());
                 ReloadListBox();
             }
+            else if (lbNevek.SelectedItem == null)
+            {
+                MessageBox.Show("No item selected");
+            }
         }
         private void txtBoxKeyDown(object sender, KeyEventArgs e)
         {

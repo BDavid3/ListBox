@@ -14,7 +14,7 @@ namespace ListBox
     public partial class MainWindow : Window
     {
 
-        List<string> nevekLista = new List<string>() { "Kovács Anna", "Nagy Béla", "Szabó Kata" };
+        List<string> termekek = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -33,10 +33,10 @@ namespace ListBox
 
         public void DeleteItem()
         {
-           if (lbNevek.SelectedItem != null)
-           {
+            if (lbNevek.SelectedItem != null)
+            {
                 string torlendo = lbNevek.SelectedItem.ToString();
-                nevekLista.Remove(torlendo);
+                termekek.Remove(torlendo);
 
                 ReloadListBox();
             }
@@ -46,9 +46,11 @@ namespace ListBox
         {
             if (!string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
             {
-                nevekLista.Add(txtBox.Text.ToString());
-                ReloadListBox();
-                txtBox.Text = "";
+                AddToListHelper();
+            }
+            else if (string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
+            {
+                MessageBox.Show("Empty TextBox");
             }
         }
 
@@ -56,15 +58,32 @@ namespace ListBox
         {
             if (lbNevek.SelectedItem != null)
             {
-                nevekLista.Remove(lbNevek.SelectedItem.ToString());
+                termekek.Remove(lbNevek.SelectedItem.ToString());
                 ReloadListBox();
             }
         }
-
+        private void txtBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && !string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
+            {
+                AddToListHelper();
+            }
+            else if (e.Key == Key.Enter && string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
+            {
+                MessageBox.Show("Empty TextBox");
+            }
+        }
         private void ReloadListBox()
         {
             lbNevek.ItemsSource = null;
-            lbNevek.ItemsSource = nevekLista;
+            lbNevek.ItemsSource = termekek;
+        }
+
+        private void AddToListHelper()
+        {
+            termekek.Add(txtBox.Text.ToString());
+            ReloadListBox();
+            txtBox.Text = "";
         }
     }
 }

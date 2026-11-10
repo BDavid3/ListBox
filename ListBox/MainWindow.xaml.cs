@@ -18,8 +18,7 @@ namespace ListBox
         public MainWindow()
         {
             InitializeComponent();
-            lbNevek.ItemsSource = null;
-            lbNevek.ItemsSource = nevekLista;
+            ReloadListBox();
         }
 
 
@@ -39,9 +38,33 @@ namespace ListBox
                 string torlendo = lbNevek.SelectedItem.ToString();
                 nevekLista.Remove(torlendo);
 
-                lbNevek.ItemsSource = null;
-                lbNevek.ItemsSource = nevekLista;
+                ReloadListBox();
             }
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtBox.Text.ToString()))
+            {
+                nevekLista.Add(txtBox.Text.ToString());
+                ReloadListBox();
+                txtBox.Text = "";
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbNevek.SelectedItem != null)
+            {
+                nevekLista.Remove(lbNevek.SelectedItem.ToString());
+                ReloadListBox();
+            }
+        }
+
+        private void ReloadListBox()
+        {
+            lbNevek.ItemsSource = null;
+            lbNevek.ItemsSource = nevekLista;
         }
     }
 }

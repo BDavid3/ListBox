@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="ListBox" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="lbNevek" Width="200" Height="250" HorizontalAlignment="Left" Margin="20"></ListBox>
+        <TextBox x:Name="txtBox" Width="200" Height="25" HorizontalAlignment="Left" Margin="20,0,0,300" TextAlignment="Center" Text=""/>
+        <ListBox x:Name="lbNevek" Width="200" Height="250" HorizontalAlignment="Left" Margin="20" SelectionMode="Extended" Background="AntiqueWhite"/>
+        <Button x:Name="btnAdd" Content="Add" Width="80" Height="25" HorizontalAlignment="Left" Margin="20,300,0,0" Background="LightGreen" Click="btnAdd_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" Width="80" Height="25" HorizontalAlignment="Left" Margin="140,300,0,0" Background="LightCoral" Click="btnDelete_Click"/>
     </Grid>
 </Window>
